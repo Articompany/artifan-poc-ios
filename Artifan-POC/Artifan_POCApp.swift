@@ -11,7 +11,7 @@ import SwiftUI
 struct Artifan_POCApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ShowView()
         }
     }
 }
