@@ -1,0 +1,8 @@
+//
+//  Release.xcconfig
+//  Artifan-POC
+//
+//  Created by Victor Castro on 12/08/24.
+//
+
+ENVIRONMENT_HOST = "https://dashboard.heroku.com"

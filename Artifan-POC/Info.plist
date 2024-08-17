@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ENVIRONMENT_URL</key>
+	<dict>
+		<key>SCHEME</key>
+		<string>${DOMAIN_URL_SCHEME}</string>
+		<key>HOST</key>
+		<string>${DOMAIN_URL_HOST}</string>
+		<key>PORT</key>
+		<string>${DOMAIN_URL_PORT}</string>
+	</dict>
+</dict>
+</plist>
