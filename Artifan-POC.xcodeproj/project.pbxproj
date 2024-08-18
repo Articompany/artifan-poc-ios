@@ -17,6 +17,8 @@
 		CC7B32142C6D8AE2001D3187 /* ShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B32132C6D8AE2001D3187 /* ShowModel.swift */; };
 		CCDF729F2C6AD6F20084BD94 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */; };
 		CCDF72A12C6AE5A70084BD94 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF72A02C6AE5A70084BD94 /* ApiManager.swift */; };
+		CCFC6E2A2C7177E6003089CE /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC6E292C7177E6003089CE /* LocalStorageManager.swift */; };
+		CCFC6E2D2C717DF6003089CE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CCFC6E2C2C717DF6003089CE /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		CCDF729D2C6AD46E0084BD94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 		CCDF72A02C6AE5A70084BD94 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		CCFC6E292C7177E6003089CE /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFC6E2D2C717DF6003089CE /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +78,7 @@
 				CC02D4A32C683D8A00C9A9ED /* Preview Content */,
 				CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */,
 				CCDF72A02C6AE5A70084BD94 /* ApiManager.swift */,
+				CCFC6E292C7177E6003089CE /* LocalStorageManager.swift */,
 			);
 			path = "Artifan-POC";
 			sourceTree = "<group>";
@@ -98,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				CC02D4AD2C683E1F00C9A9ED /* ShowsViewmodel.swift */,
-				CC02D4B22C683E9D00C9A9ED /* ShowsView.swift */,
 				CC02D4B02C683E3900C9A9ED /* ShowsResponseDTO.swift */,
 				CC7B32132C6D8AE2001D3187 /* ShowModel.swift */,
+				CC02D4B22C683E9D00C9A9ED /* ShowsView.swift */,
 				CC5B2B952C703AB900F555B5 /* ShowView.swift */,
 			);
 			path = Shows;
@@ -131,6 +136,9 @@
 			dependencies = (
 			);
 			name = "Artifan-POC";
+			packageProductDependencies = (
+				CCFC6E2C2C717DF6003089CE /* Kingfisher */,
+			);
 			productName = "Artifan-POC";
 			productReference = CC02D49A2C683D8A00C9A9ED /* Artifan-POC.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +167,9 @@
 				Base,
 			);
 			mainGroup = CC02D4912C683D8900C9A9ED;
+			packageReferences = (
+				CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CC02D49B2C683D8A00C9A9ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -185,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFC6E2A2C7177E6003089CE /* LocalStorageManager.swift in Sources */,
 				CC02D4B32C683E9D00C9A9ED /* ShowsView.swift in Sources */,
 				CCDF729F2C6AD6F20084BD94 /* EnvironmentManager.swift in Sources */,
 				CC02D4B12C683E3900C9A9ED /* ShowsResponseDTO.swift in Sources */,
@@ -402,6 +414,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CCFC6E2C2C717DF6003089CE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CC02D4922C683D8900C9A9ED /* Project object */;
 }

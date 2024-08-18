@@ -10,7 +10,7 @@ import Foundation
 // MARK: - RootDTO
 struct ShowsResponseDTO: Codable {
     let data: [ShowDataDTO]
-    // let meta: MetaDTO
+    let meta: MetaDTO
 }
 
 // MARK: - ShowDataDTO
@@ -132,3 +132,49 @@ struct PaginationDTO: Codable {
     let total: Int
 }
 
+extension ShowDataDTO {
+    func toModel() -> ShowModel {
+        let banner = ShowModel.BannerModel(
+            id: attributes.banner?.data.id ?? 0,
+            url: attributes.banner?.data.attributes.url
+        )
+        let category = ShowModel.CategoryModel(
+            id: attributes.category?.data.id ?? 0,
+            name: attributes.category?.data.attributes.name ?? ""
+        )
+        
+        let photos = attributes.photos?.data?.map({ photo in
+            ShowModel.PhotoModel(id: photo.id, url: photo.attributes.url)
+        }) ?? []
+        
+        var socialMediaLinks: [ShowModel.SocialMediaModel] = []
+        
+        if let facebookLink = attributes.facebook {
+            socialMediaLinks.append(ShowModel.SocialMediaModel(id: "facebook", name: "Facebook", link: facebookLink))
+        }
+        
+        if let instagramLink = attributes.instagram {
+            socialMediaLinks.append(ShowModel.SocialMediaModel(id: "instagram", name: "Instagram", link: instagramLink))
+        }
+        
+        if let tiktokLink = attributes.tiktok {
+            socialMediaLinks.append(ShowModel.SocialMediaModel(id: "tiktok", name: "Tiktok", link: tiktokLink))
+        }
+        
+        if let youtubeLink = attributes.youtube {
+            socialMediaLinks.append(ShowModel.SocialMediaModel(id: "youtube", name: "Youtube", link: youtubeLink))
+        }
+        
+        return ShowModel(
+            id: id,
+            title: attributes.title,
+            description: attributes.description ?? "",
+            city: attributes.city,
+            banner: banner,
+            category: category,
+            photos: photos,
+            whatsapp: attributes.whatsapp,
+            socialMedia: socialMediaLinks
+        )
+    }
+}

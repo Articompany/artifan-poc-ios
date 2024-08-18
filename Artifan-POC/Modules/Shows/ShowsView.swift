@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ShowsView: View {
     @StateObject private var viewModel = ShowsViewModel()
@@ -43,22 +44,17 @@ struct ShowsView: View {
                             NavigationLink(destination: ShowView(show: show)) {
                                 VStack(alignment: .leading) {
                                     if let bannerURL = show.banner?.url {
-                                        AsyncImage(url: URL(string: bannerURL)) { image in
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                        } placeholder: {
-                                            ProgressView()
-                                        }
-                                        .frame(height: 150)
-                                        .cornerRadius(8)
+                                        KFImage(URL(string: bannerURL))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(height: 150)
+                                            .cornerRadius(8)
                                     } else {
                                         Rectangle()
                                             .fill(Color.gray)
                                             .frame(height: 150)
                                             .cornerRadius(8)
                                     }
-                                    
                                     Text(show.title)
                                         .font(.headline)
                                         .lineLimit(1)
@@ -76,6 +72,9 @@ struct ShowsView: View {
                     }
                     .padding(.all, 16)
                 }
+                .refreshable {
+                    await fetchShowsAvailables(refresh: true)
+                }
             }
             .navigationTitle("Shows")
             .task {
@@ -84,12 +83,8 @@ struct ShowsView: View {
         }
     }
     
-    private func fetchShowsAvailables() async {
-        do {
-            try await viewModel.fetchShows()
-        } catch(let error) {
-            print(error.localizedDescription)
-        }
+    private func fetchShowsAvailables(refresh: Bool = false) async {
+        await viewModel.fetchShows(refreshLocalData: refresh)
     }
 }
 

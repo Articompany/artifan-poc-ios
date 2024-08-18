@@ -11,8 +11,33 @@ import SwiftUI
 class ShowsViewModel: ObservableObject {
     
     @Published var shows: [ShowModel] = []
+    @Published var error: Error?
     
-    func fetchShows() async throws {
+    private let storage = LocalStorageManager.shared
+    
+    func fetchShows(refreshLocalData: Bool = false) async {
+        if refreshLocalData {
+            storage.resetAll()
+        }
+        var localShowsStored: [ShowModel] = []
+        
+        localShowsStored = storage.getObject(forKey: "savedShows", defaultValue: [])
+        
+        if localShowsStored.isEmpty {
+            do {
+                let showsFromApi = try await getShowsFromApi()
+                storage.setObject(showsFromApi, forKey: "savedShows")
+                localShowsStored = showsFromApi
+            } catch {
+                
+            }
+        }
+        
+        self.shows = localShowsStored
+        
+    }
+    
+    func getShowsFromApi() async throws -> [ShowModel] {
         
         let path = "/api/shows"
         
@@ -28,13 +53,9 @@ class ShowsViewModel: ObservableObject {
         )
         
         let shows: [ShowModel] = response.data.map { showDTO in
-            let banner = ShowModel.Banner(id: showDTO.attributes.banner?.data.id ?? 0, url: showDTO.attributes.banner?.data.attributes.url)
-            let category = ShowModel.Category(id: showDTO.attributes.category?.data.id ?? 0, name: showDTO.attributes.category?.data.attributes.name ?? "")
-            let show = ShowModel(id: showDTO.id, title: showDTO.attributes.title, description: showDTO.attributes.description ?? "", city: showDTO.attributes.city, banner: banner, category: category)
-            
-            return show
+            showDTO.toModel()
         }
         
-        self.shows = shows
+        return shows
     }
 }
