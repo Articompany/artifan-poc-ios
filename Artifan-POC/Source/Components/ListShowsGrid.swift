@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct GridShowItem: Identifiable {
     let id = UUID()
     let height: CGFloat
     let title: String
+    let image: String
 }
 
 struct ListShowsGrid: View {
@@ -24,7 +26,11 @@ struct ListShowsGrid: View {
     let spacing: CGFloat
     let horizontalPadding: CGFloat
     
-    init(gridItems: [GridShowItem], numOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10) {
+    init(items: [ShowModel], numOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10) {
+        let gridItems: [GridShowItem] = items.map { show in
+            let randomHeight = CGFloat.random(in: 200...400)
+            return GridShowItem(height: randomHeight, title: show.title, image: show.banner?.url ?? "")
+        }
         self.spacing = spacing
         self.horizontalPadding = horizontalPadding
         var columns = [Column]()
@@ -58,13 +64,7 @@ struct ListShowsGrid: View {
                 ForEach(columns) { column in
                     LazyVStack(spacing: spacing) {
                         ForEach(column.gridItems) { gridItem in
-                            Rectangle()
-                                .foregroundColor(.blue)
-                                .frame(height: gridItem.height)
-                                .overlay(
-                                    Text(gridItem.title)
-                                        .font(.system(size: 30, weight: .bold))
-                                )
+                            getItemView(gridItem)
                         }
                     }
                 }
@@ -72,14 +72,36 @@ struct ListShowsGrid: View {
             .padding(.horizontal, horizontalPadding)
         }
     }
+    
+    private func getItemView(_ gridItem: GridShowItem) -> some View {
+        ZStack {
+            GeometryReader { reader in
+                KFImage(URL(string: gridItem.image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: reader.size.width, height: reader.size.height, alignment: .center)
+            }
+        }
+        .frame(height: gridItem.height)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
 }
 
 #Preview {
-    var gridItems = [GridShowItem]()
-    for i in 0 ..< 30 {
-        let randomHeight = CGFloat.random(in: 100...400)
-        gridItems.append(GridShowItem(height: randomHeight, title: String(i)))
-    }
-    return ListShowsGrid(gridItems: gridItems, numOfColumns: 2, spacing: 10, horizontalPadding: 15)
+    var items: [ShowModel] = [
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
+        ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil)
+    ]
+    return ListShowsGrid(items: items, numOfColumns: 2, spacing: 10, horizontalPadding: 15)
     
 }

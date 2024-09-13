@@ -37,45 +37,10 @@ struct ListShowsScreen: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-                
-                ListShowsGrid(gridItems: viewModel.showsItem, numOfColumns: 2)
-//                ScrollView {
-//                    LazyVGrid(columns: columns, spacing: 16) {
-//                        ForEach(filteredShows) { show in
-//                            NavigationLink(destination: ShowView(show: show)) {
-//                                VStack(alignment: .leading) {
-//                                    if let bannerURL = show.banner?.url {
-//                                        KFImage(URL(string: bannerURL))
-//                                            .resizable()
-//                                            .aspectRatio(contentMode: .fit)
-//                                            .frame(height: 150)
-//                                            .cornerRadius(8)
-//                                    } else {
-//                                        Rectangle()
-//                                            .fill(Color.gray)
-//                                            .frame(height: 150)
-//                                            .cornerRadius(8)
-//                                    }
-//                                    Text(show.title)
-//                                        .font(.title3)
-//                                        .lineLimit(2)
-//                                    
-//                                    Text(show.city)
-//                                        .font(.subheadline)
-//                                        .foregroundColor(.secondary)
-//                                }
-//                                .padding()
-//                                .background(Color.white)
-//                                .cornerRadius(10)
-//                                .shadow(radius: 4)
-//                            }
-//                        }
-//                    }
-//                    .padding(.all, 16)
-//                }
-                .refreshable {
-                    await fetchShowsAvailables(refresh: true)
-                }
+                ListShowsGrid(items: filteredShows, numOfColumns: 2)
+                    .refreshable {
+                        await fetchShowsAvailables(refresh: true)
+                    }
             }
             .navigationTitle("Shows")
             .task {

@@ -11,7 +11,6 @@ import SwiftUI
 class ShowsViewModel: ObservableObject {
     
     @Published var shows: [ShowModel] = []
-    @Published var showsItem: [GridShowItem] = []
     @Published var error: Error?
     
     private let storage = LocalStorageManager.shared
@@ -29,10 +28,6 @@ class ShowsViewModel: ObservableObject {
                 let showsFromApi = try await getShowsFromJson()
                 storage.setObject(showsFromApi, forKey: "savedShows")
                 localShowsStored = showsFromApi
-                showsItem = showsFromApi.map { show in
-                    let randomHeight = CGFloat.random(in: 100...400)
-                    return GridShowItem(height: randomHeight, title: show.title)
-                }
             } catch {
                 
             }
