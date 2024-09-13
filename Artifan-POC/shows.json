@@ -1,0 +1,226 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Show 1",
+            "description": "Descripción del show 1",
+            "city": "Arequipa",
+            "banner": {
+                "id": 1,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+            },
+            "category": {
+                "id": 1,
+                "name": "payaso"
+            },
+            "photos": [
+                {
+                    "id": 1,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b2_52cff505b5.jpg"
+                },
+                {
+                    "id": 2,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b4_03a864c06e.jpg"
+                }
+            ],
+            "whatsapp": 907353600,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Show 2",
+            "description": "Descripción del show 2",
+            "city": "Arequipa",
+            "banner": {
+                "id": 4,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/1_d9cdde78e4.jpg"
+            },
+            "category": {
+                "id": 2,
+                "name": "dalina"
+            },
+            "photos": [
+                {
+                    "id": 3,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+                },
+                {
+                    "id": 4,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+                }
+            ],
+            "whatsapp": 908088883,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Show 3",
+            "description": "Descripción del show 2",
+            "city": "Arequipa",
+            "banner": {
+                "id": 10,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+            },
+            "category": {
+                "id": 2,
+                "name": "dalina"
+            },
+            "photos": [
+                {
+                    "id": 3,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+                },
+                {
+                    "id": 4,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+                }
+            ],
+            "whatsapp": 908088883,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Show 4",
+            "description": "Descripción del show 4",
+            "city": "Arequipa",
+            "banner": {
+                "id": 11,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b2_52cff505b5.jpg"
+            },
+            "category": {
+                "id": 2,
+                "name": "dalina"
+            },
+            "photos": [
+                {
+                    "id": 3,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+                },
+                {
+                    "id": 4,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+                }
+            ],
+            "whatsapp": 908088883,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Show 5",
+            "description": "Descripción del show 5",
+            "city": "Arequipa",
+            "banner": {
+                "id": 12,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b4_03a864c06e.jpg"
+            },
+            "category": {
+                "id": 2,
+                "name": "dalina"
+            },
+            "photos": [
+                {
+                    "id": 3,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+                },
+                {
+                    "id": 4,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+                }
+            ],
+            "whatsapp": 908088883,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Show 6",
+            "description": "Descripción del show 6",
+            "city": "Arequipa",
+            "banner": {
+                "id": 12,
+                "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"
+            },
+            "category": {
+                "id": 2,
+                "name": "dalina"
+            },
+            "photos": [
+                {
+                    "id": 3,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/b1_114bd01128.jpg"
+                },
+                {
+                    "id": 4,
+                    "url": "https://artifan-dev.s3.sa-east-1.amazonaws.com/c2_81f8941e86.webp"
+                }
+            ],
+            "whatsapp": 908088883,
+            "socialMedia": [
+                {
+                    "id": "facebook",
+                    "name": "Facebook",
+                    "link": "http://facebook.com",
+                },
+                {
+                    "id": "instagram",
+                    "name": "Instagram",
+                    "link": "http://instagram.com"
+                }
+            ]
+        }
+    ]
+}

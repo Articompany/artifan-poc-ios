@@ -11,6 +11,7 @@ import SwiftUI
 class ShowsViewModel: ObservableObject {
     
     @Published var shows: [ShowModel] = []
+    @Published var showsItem: [GridShowItem] = []
     @Published var error: Error?
     
     private let storage = LocalStorageManager.shared
@@ -25,9 +26,13 @@ class ShowsViewModel: ObservableObject {
         
         if localShowsStored.isEmpty {
             do {
-                let showsFromApi = try await getShowsFromApi()
+                let showsFromApi = try await getShowsFromJson()
                 storage.setObject(showsFromApi, forKey: "savedShows")
                 localShowsStored = showsFromApi
+                showsItem = showsFromApi.map { show in
+                    let randomHeight = CGFloat.random(in: 100...400)
+                    return GridShowItem(height: randomHeight, title: show.title)
+                }
             } catch {
                 
             }
@@ -57,5 +62,22 @@ class ShowsViewModel: ObservableObject {
         }
         
         return shows
+    }
+    
+    func getShowsFromJson() async throws -> [ShowModel] {
+        guard let url = Bundle.main.url(forResource: "shows", withExtension: "json") else {
+            throw NSError(domain: "", code: 0, userInfo: nil)
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let showsResponse = try decoder.decode(ShowsResponseJSONDTO.self, from: data)
+            
+            return showsResponse.data
+        } catch {
+            print("Error al cargar o decodificar el archivo shows.json: \(error)")
+            return []
+        }
     }
 }

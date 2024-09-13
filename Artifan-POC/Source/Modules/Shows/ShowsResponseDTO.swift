@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct ShowsResponseJSONDTO: Codable {
+    let data: [ShowModel]
+}
+    
 // MARK: - RootDTO
 struct ShowsResponseDTO: Codable {
     let data: [ShowDataDTO]

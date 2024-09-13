@@ -28,7 +28,7 @@ struct ShowModel: Identifiable, Codable {
         let name: String
     }
     
-    struct PhotoModel: Codable {
+    struct PhotoModel: Codable, Identifiable {
         let id: Int
         let url: String
     }
