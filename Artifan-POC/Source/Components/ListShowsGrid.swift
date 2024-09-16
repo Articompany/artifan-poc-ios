@@ -59,18 +59,16 @@ struct ListShowsGrid: View {
     }
     
     var body: some View {
-        ScrollView {
-            HStack(alignment: .top, spacing: spacing) {
-                ForEach(columns) { column in
-                    LazyVStack(spacing: spacing) {
-                        ForEach(column.gridItems) { gridItem in
-                            getItemView(gridItem)
-                        }
+        HStack(alignment: .top, spacing: spacing) {
+            ForEach(columns) { column in
+                LazyVStack(spacing: spacing) {
+                    ForEach(column.gridItems) { gridItem in
+                        getItemView(gridItem)
                     }
                 }
             }
-            .padding(.horizontal, horizontalPadding)
         }
+        .padding(.horizontal, horizontalPadding)
     }
     
     private func getItemView(_ gridItem: GridShowItem) -> some View {
@@ -89,7 +87,7 @@ struct ListShowsGrid: View {
 }
 
 #Preview {
-    var items: [ShowModel] = [
+    let items: [ShowModel] = [
         ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
         ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),
         ShowModel(id: 1, title: "tituel", description: "descript", city: "arequi", banner: ShowModel.BannerModel(id: 1, url: "https://artifan-dev.s3.sa-east-1.amazonaws.com/c3_8a52dfb195.webp"), category: nil, photos: [], whatsapp: nil, socialMedia: nil),

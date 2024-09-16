@@ -11,6 +11,7 @@ import Kingfisher
 struct ListShowsScreen: View {
     @StateObject private var viewModel = ShowsViewModel()
     @State private var selectedCategory: String = "Todos"
+    @State private var searchText: String = ""
     
     let categories = ["Todos", "Dalinas", "Payasos"]
     
@@ -20,11 +21,22 @@ struct ListShowsScreen: View {
     ]
     
     var filteredShows: [ShowModel] {
+        var showsCategorized: [ShowModel] = []
+        // var filteredShows: [ShowModel] = []
+        
         if selectedCategory == "Todos" {
-            return viewModel.shows
+            showsCategorized = viewModel.shows
         } else {
-            return viewModel.shows.filter { $0.category?.name == selectedCategory }
+            showsCategorized = viewModel.shows.filter { $0.category?.name == selectedCategory }
         }
+        
+        if searchText.isEmpty {
+            return showsCategorized
+        } else {
+            return showsCategorized.filter { $0.title.contains(searchText) || $0.description.contains(searchText) }
+        }
+        
+        
     }
     
     var body: some View {
@@ -37,15 +49,27 @@ struct ListShowsScreen: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-                ListShowsGrid(items: filteredShows, numOfColumns: 2)
-                    .refreshable {
-                        await fetchShowsAvailables(refresh: true)
+                ScrollView {
+                    ListShowsGrid(items: filteredShows, numOfColumns: 2)
+                }.refreshable {
+                    await fetchShowsAvailables(refresh: true)
+                }
+            }
+            .navigationTitle("Búsqueda y diversión")
+            .searchable(text: $searchText, prompt: "Buscar")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        print("Perfil presionado")
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title2)
                     }
+                }
             }
-            .navigationTitle("Shows")
-            .task {
-                await fetchShowsAvailables()
-            }
+        }
+        .task {
+            await fetchShowsAvailables()
         }
     }
     
