@@ -33,8 +33,7 @@ class ShowsViewModel: ObservableObject {
             }
         }
         
-        self.shows = localShowsStored
-        
+        self.shows = localShowsStored   
     }
     
     func getShowsFromApi() async throws -> [ShowModel] {

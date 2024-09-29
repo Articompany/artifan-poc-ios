@@ -4,12 +4,12 @@
 <dict>
 	<key>ENVIRONMENT_URL</key>
 	<dict>
-		<key>SCHEME</key>
-		<string>${DOMAIN_URL_SCHEME}</string>
 		<key>HOST</key>
 		<string>${DOMAIN_URL_HOST}</string>
 		<key>PORT</key>
 		<string>${DOMAIN_URL_PORT}</string>
+		<key>SCHEME</key>
+		<string>${DOMAIN_URL_SCHEME}</string>
 	</dict>
 </dict>
 </plist>

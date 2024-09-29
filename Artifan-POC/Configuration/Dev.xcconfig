@@ -5,6 +5,6 @@
 //  Created by Victor Castro on 12/08/24.
 //
 
-DOMAIN_URL_SCHEME=https
-DOMAIN_URL_HOST=artifan-strapi-db03d78dac93.herokuapp.com
-DOMAIN_URL_PORT=443
+DOMAIN_URL_SCHEME=http
+DOMAIN_URL_HOST=localhost
+DOMAIN_URL_PORT=1337

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Artifan_POCApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ListShowsScreen()
+            ListArtistsScreen()
         }
     }
 }

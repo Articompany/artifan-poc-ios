@@ -28,20 +28,20 @@ class APIManager {
         guard let url = EnvironmentManager.shared.environmentURL else {
             throw NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "URL no válida"])
         }
-
+        
         var components = URLComponents()
         components.scheme = url.scheme
         components.host = url.host
         components.port = url.port
-        components.path = path
+        components.path = path.hasPrefix("/") ? path : "/" + path
         components.queryItems = queryItems
 
-        guard let url = components.url else {
-            throw NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "URL no válida"])
+        guard let urlWithComponents = components.url else {
+            throw NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "\(components) no válida"])
         }
-        print("🔗 Full URL: \(url)")
+        print("🔗 Full URL: \(urlWithComponents)")
 
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: urlWithComponents)
         request.httpMethod = method.rawValue
 
         if let body = body {
