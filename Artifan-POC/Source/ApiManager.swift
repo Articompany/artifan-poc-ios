@@ -13,6 +13,29 @@ class APIManager {
         case get = "GET"
         case post = "POST"
     }
+    
+    enum APIError: Error {
+        case invalidURL
+        case invalidURLComponents(URLComponents)
+        case decodingError(Error)
+        case networkError
+        case invalidResponse
+        
+        var localizedDescription: String {
+            switch self {
+            case .invalidURL:
+                return "URL no válida"
+            case .invalidURLComponents(let components):
+                return "\(components) no válida"
+            case .decodingError(let error):
+                return "Error al decodificar la respuesta: \(error.localizedDescription)"
+            case .networkError:
+                return "Error en la respuesta del servidor"
+            case .invalidResponse:
+                return "Respuesta no válida"
+            }
+        }
+    }
 
     static let shared = APIManager()
 
@@ -26,7 +49,7 @@ class APIManager {
         responseType: T.Type
     ) async throws -> T {
         guard let url = EnvironmentManager.shared.environmentURL else {
-            throw NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "URL no válida"])
+            throw APIError.invalidURL
         }
         
         var components = URLComponents()
@@ -37,7 +60,7 @@ class APIManager {
         components.queryItems = queryItems
 
         guard let urlWithComponents = components.url else {
-            throw NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "\(components) no válida"])
+            throw APIError.invalidURLComponents(components)
         }
         print("🔗 Full URL: \(urlWithComponents)")
 
@@ -65,28 +88,13 @@ class APIManager {
                     return decodedResponse
                 } catch {
                     print("❌ Decoding Error: \(error.localizedDescription)")
-                    throw NSError(
-                        domain: "DecodingError",
-                        code: 0,
-                        userInfo: [
-                            NSLocalizedDescriptionKey: "Error al decodificar la respuesta.",
-                            NSUnderlyingErrorKey: error
-                        ]
-                    )
+                    throw APIError.decodingError(error)
                 }
             } else {
-                throw NSError(
-                    domain: "NetworkError",
-                    code: 0,
-                    userInfo: [NSLocalizedDescriptionKey: "Error en la respuesta del servidor"]
-                )
+                throw APIError.networkError
             }
         } else {
-            throw NSError(
-                domain: "InvalidResponse",
-                code: 0,
-                userInfo: [NSLocalizedDescriptionKey: "Respuesta no válida"]
-            )
+            throw APIError.invalidResponse
         }
     }
 }
