@@ -9,15 +9,16 @@ import SwiftUI
 import Kingfisher
 
 struct AFGridItem: Identifiable {
-    let id = UUID()
-    let height: CGFloat
+    let id: String
     let title: String
     let image: String
+    let height: CGFloat
 }
 
-protocol GridItemProtocol {
-    var title: String { get }
-    var image: String { get }
+protocol AFGridItemProtocol {
+    var gridID: String { get }
+    var gridTitle: String { get }
+    var gridImage: String { get }
 }
 
 struct AFGridItems: View {
@@ -30,14 +31,16 @@ struct AFGridItems: View {
     let columns: [Column]
     let spacing: CGFloat
     let horizontalPadding: CGFloat
+    let onTapItem: ((AFGridItem) -> Void)?
     
-    init(items: [GridItemProtocol], numOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10) {
+    init(items: [AFGridItemProtocol], numOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10, onTapItem: ((AFGridItem) -> Void)? = nil) {
         let gridItems: [AFGridItem] = items.map { item in
             let randomHeight = CGFloat.random(in: 200...400)
-            return AFGridItem(height: randomHeight, title: item.title, image: item.image)
+            return AFGridItem(id: item.gridID, title: item.gridTitle, image: item.gridImage, height: randomHeight)
         }
         self.spacing = spacing
         self.horizontalPadding = horizontalPadding
+        self.onTapItem = onTapItem
         var columns = [Column]()
         for _ in 0 ..< numOfColumns {
             columns.append(Column())
@@ -69,7 +72,9 @@ struct AFGridItems: View {
                 ForEach(columns) { column in
                     LazyVStack(spacing: spacing) {
                         ForEach(column.gridItems) { gridItem in
-                            getItemView(gridItem)
+                            NavigationLink(destination: ArtistDetailScreen(gridItem: gridItem)) {
+                                getItemView(gridItem)
+                            }
                         }
                     }
                 }
@@ -94,22 +99,22 @@ struct AFGridItems: View {
 }
 
 #Preview {
-    struct ArtistPreview: GridItemProtocol {
-        var title: String
-        var image: String
+    struct ArtistPreview: AFGridItemProtocol {
+        var gridID: String
+        var gridTitle: String
+        var gridImage: String
     }
     
     let gridItemsPreview: [ArtistPreview] = [
-        ArtistPreview(title: "Title 1", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
-        ArtistPreview(title: "Title 2", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_r0_f4937416e7.jpg"),
-        ArtistPreview(title: "Title 3", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/e1_caf847d69e.png"),
-        ArtistPreview(title: "Title 4", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
-        ArtistPreview(title: "Title 5", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_t0_088d280350.jpg"),
-        ArtistPreview(title: "Title 5", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_k0_c1f85d1c5f.jpg"),
-        ArtistPreview(title: "Title 5", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_c0_e79bf07396.jpg"),
-        ArtistPreview(title: "Title 5", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_d1_271c05bb0b.jpg")
+        ArtistPreview(gridID: "1", gridTitle: "Title 1", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
+        ArtistPreview(gridID: "2", gridTitle: "Title 2", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_r0_f4937416e7.jpg"),
+        ArtistPreview(gridID: "3", gridTitle: "Title 3", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/e1_caf847d69e.png"),
+        ArtistPreview(gridID: "4", gridTitle: "Title 4", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
+        ArtistPreview(gridID: "5", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_t0_088d280350.jpg"),
+        ArtistPreview(gridID: "6", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_k0_c1f85d1c5f.jpg"),
+        ArtistPreview(gridID: "7", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_c0_e79bf07396.jpg"),
+        ArtistPreview(gridID: "8", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_d1_271c05bb0b.jpg")
     ]
-
-    return AFGridItems(items: gridItemsPreview, numOfColumns: 2, spacing: 10, horizontalPadding: 15)
     
+    return AFGridItems(items: gridItemsPreview, numOfColumns: 2, spacing: 10, horizontalPadding: 15)
 }

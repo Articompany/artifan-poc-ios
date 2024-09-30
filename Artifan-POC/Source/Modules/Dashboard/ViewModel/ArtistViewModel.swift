@@ -11,16 +11,16 @@ import Foundation
 class ArtistViewModel {
     var artists: [ArtistModel] = []
     var isLoading: Bool = false
-    var errorView: Error?
-        
+    var error: Error?
+    
     func syncArtists() async {
         isLoading = true
         defer { isLoading = false }
         do {
             artists = try await fetchArtistsFromApi()
-            errorView = nil
+            error = nil
         } catch {
-            errorView = error
+            self.error = error
         }
     }
     

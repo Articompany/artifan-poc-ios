@@ -15,6 +15,8 @@
 		CC02D4B32C683E9D00C9A9ED /* ListShowsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02D4B22C683E9D00C9A9ED /* ListShowsScreen.swift */; };
 		CC5B2B962C703AB900F555B5 /* ShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B2B952C703AB900F555B5 /* ShowView.swift */; };
 		CC7B32142C6D8AE2001D3187 /* ShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B32132C6D8AE2001D3187 /* ShowModel.swift */; };
+		CC808CBA2CAA5817000124F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC808CB92CAA5817000124F4 /* LaunchScreen.storyboard */; };
+		CC808CBD2CAA5AAE000124F4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CC808CBC2CAA5AAE000124F4 /* Lottie */; };
 		CCDF729F2C6AD6F20084BD94 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */; };
 		CCDF72A12C6AE5A70084BD94 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF72A02C6AE5A70084BD94 /* ApiManager.swift */; };
 		CCFC6E2A2C7177E6003089CE /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC6E292C7177E6003089CE /* LocalStorageManager.swift */; };
@@ -31,6 +33,7 @@
 		CC02D4B22C683E9D00C9A9ED /* ListShowsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListShowsScreen.swift; sourceTree = "<group>"; };
 		CC5B2B952C703AB900F555B5 /* ShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowView.swift; sourceTree = "<group>"; };
 		CC7B32132C6D8AE2001D3187 /* ShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModel.swift; sourceTree = "<group>"; };
+		CC808CB92CAA5817000124F4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCDF729B2C6AD3620084BD94 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		CCDF729C2C6AD37C0084BD94 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		CCDF729D2C6AD46E0084BD94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -40,7 +43,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CCEB5B742CA882FB00DCC521 /* Artist */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Artist; sourceTree = "<group>"; };
+		CC808CBE2CAA5AB3000124F4 /* LottieView */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LottieView; sourceTree = "<group>"; };
+		CC808CC52CAA5B62000124F4 /* Splash */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Splash; sourceTree = "<group>"; };
+		CC808CCC2CAA5BBE000124F4 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+		CC808CCF2CAA5C07000124F4 /* Coordinator */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Coordinator; sourceTree = "<group>"; };
+		CCEB5B742CA882FB00DCC521 /* Dashboard */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dashboard; sourceTree = "<group>"; };
 		CCEB5B852CA9846F00DCC521 /* AlertError */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AlertError; sourceTree = "<group>"; };
 		CCEB5B8A2CA98A0200DCC521 /* AFGridItems */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AFGridItems; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -51,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCFC6E2D2C717DF6003089CE /* Kingfisher in Frameworks */,
+				CC808CBD2CAA5AAE000124F4 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				CC02D49D2C683D8A00C9A9ED /* Artifan_POCApp.swift */,
+				CC808CB92CAA5817000124F4 /* LaunchScreen.storyboard */,
 				CCDF729D2C6AD46E0084BD94 /* Info.plist */,
 				CCDF729A2C6AD33E0084BD94 /* Configuration */,
 				CC2A93692C9125F500447D69 /* Source */,
@@ -98,7 +107,8 @@
 		CC02D4AB2C683E0900C9A9ED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CCEB5B742CA882FB00DCC521 /* Artist */,
+				CC808CC52CAA5B62000124F4 /* Splash */,
+				CCEB5B742CA882FB00DCC521 /* Dashboard */,
 				CC02D4AF2C683E2E00C9A9ED /* Shows */,
 			);
 			path = Modules;
@@ -119,6 +129,7 @@
 		CC2A93662C9115E900447D69 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CC808CBE2CAA5AB3000124F4 /* LottieView */,
 				CCEB5B8A2CA98A0200DCC521 /* AFGridItems */,
 				CCEB5B852CA9846F00DCC521 /* AlertError */,
 			);
@@ -128,6 +139,8 @@
 		CC2A93692C9125F500447D69 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CC808CCF2CAA5C07000124F4 /* Coordinator */,
+				CC808CCC2CAA5BBE000124F4 /* Extensions */,
 				CCDF72A02C6AE5A70084BD94 /* ApiManager.swift */,
 				CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */,
 				CCFC6E292C7177E6003089CE /* LocalStorageManager.swift */,
@@ -169,13 +182,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CCEB5B742CA882FB00DCC521 /* Artist */,
+				CC808CBE2CAA5AB3000124F4 /* LottieView */,
+				CC808CC52CAA5B62000124F4 /* Splash */,
+				CC808CCC2CAA5BBE000124F4 /* Extensions */,
+				CC808CCF2CAA5C07000124F4 /* Coordinator */,
+				CCEB5B742CA882FB00DCC521 /* Dashboard */,
 				CCEB5B852CA9846F00DCC521 /* AlertError */,
 				CCEB5B8A2CA98A0200DCC521 /* AFGridItems */,
 			);
 			name = "Artifan-POC";
 			packageProductDependencies = (
 				CCFC6E2C2C717DF6003089CE /* Kingfisher */,
+				CC808CBC2CAA5AAE000124F4 /* Lottie */,
 			);
 			productName = "Artifan-POC";
 			productReference = CC02D49A2C683D8A00C9A9ED /* Artifan-POC.app */;
@@ -207,6 +225,7 @@
 			mainGroup = CC02D4912C683D8900C9A9ED;
 			packageReferences = (
 				CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CC808CBB2CAA5AAE000124F4 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = CC02D49B2C683D8A00C9A9ED /* Products */;
 			projectDirPath = "";
@@ -222,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC808CBA2CAA5817000124F4 /* LaunchScreen.storyboard in Resources */,
 				CC02D4A52C683D8A00C9A9ED /* Preview Assets.xcassets in Resources */,
 				CC02D4A22C683D8A00C9A9ED /* Assets.xcassets in Resources */,
 			);
@@ -464,6 +484,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CC808CBB2CAA5AAE000124F4 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -475,6 +503,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CC808CBC2CAA5AAE000124F4 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC808CBB2CAA5AAE000124F4 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		CCFC6E2C2C717DF6003089CE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CCFC6E2B2C717DF6003089CE /* XCRemoteSwiftPackageReference "Kingfisher" */;

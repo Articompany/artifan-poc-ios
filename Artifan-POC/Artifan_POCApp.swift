@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct Artifan_POCApp: App {
     
+    @StateObject private var coordinator = CoordinatorManager()
+    
     var body: some Scene {
         WindowGroup {
-            ListArtistsScreen()
+            coordinator.contentView()
+             .preferredColorScheme(.light)
         }
     }
 }

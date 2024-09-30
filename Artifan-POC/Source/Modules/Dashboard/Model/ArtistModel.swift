@@ -28,7 +28,8 @@ struct ArtistModel: Identifiable {
     }
 }
 
-extension ArtistModel: GridItemProtocol {
-    var title: String { name }
-    var image: String { banner.largeURL }
+extension ArtistModel: AFGridItemProtocol {
+    var gridID: String { String(id) }
+    var gridTitle: String { name }
+    var gridImage: String { banner.largeURL }
 }
