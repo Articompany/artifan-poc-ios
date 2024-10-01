@@ -9,26 +9,77 @@ import SwiftUI
 import Kingfisher
 
 struct ArtistDetailScreen: View {
+    @State private var showActionSheet = false
     
     let gridItem: AFGridItem
     
     var body: some View {
         VStack {
-            KFImage(URL(string: gridItem.image))
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
-                .frame(height: 300)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+            HStack {
+                VStack {
+                    Text("Info")
+                    Text("Fotos")
+                }.padding()
+                
+                VStack {
+                    KFImage(URL(string: gridItem.image))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300)
+                        .clipShape(.rect(
+                            topLeadingRadius: 0,
+                            bottomLeadingRadius: 150,
+                            bottomTrailingRadius: 0,
+                            topTrailingRadius: 0
+                        ))
+                    
+                    Text(gridItem.title)
+                        .font(.title)
+                        .padding(.vertical)
+                    
+                    Spacer()
+                }
+            }
             
-            Text(gridItem.title)
-                .font(.largeTitle)
-                .padding()
-            
-            Spacer()
+            Button(action: {
+                showActionSheet = true
+            }) {
+                Text("Contactar")
+                    .font(.title3)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
         }
-        .navigationTitle(gridItem.title)
-        .padding()
+        .ignoresSafeArea()
+        .actionSheet(isPresented: $showActionSheet) {
+            ActionSheet(
+                title: Text("Elige una opción"),
+                buttons: [
+                    .default(Text("Llamar a 906151515"), action: {
+                        // Acción para llamar al número
+                        if let url = URL(string: "tel://906151515") {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    .default(Text("Contactar por Messenger"), action: {
+                        // Acción para abrir Messenger
+                        if let url = URL(string: "https://m.me/username") {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    .default(Text("Ingresar a Instagram"), action: {
+                        // Acción para abrir Instagram
+                        if let url = URL(string: "https://instagram.com") {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    .cancel()
+                ]
+            )
+        }
     }
 }
 
