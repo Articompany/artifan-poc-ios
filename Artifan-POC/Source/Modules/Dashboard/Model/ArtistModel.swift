@@ -8,9 +8,10 @@
 import Foundation
 
 struct ArtistModel: Identifiable {
-    let id: Int
+    let id: String
     let name: String
     let city: String
+    let description: String
     let banner: Banner
     let category: Category
     
@@ -23,13 +24,13 @@ struct ArtistModel: Identifiable {
     }
     
     struct Category {
-        let id: Int
+        let id: String
         let name: String
     }
 }
 
 extension ArtistModel: AFGridItemProtocol {
-    var gridID: String { String(id) }
+    var gridID: String { id }
     var gridTitle: String { name }
     var gridImage: String { banner.largeURL }
 }

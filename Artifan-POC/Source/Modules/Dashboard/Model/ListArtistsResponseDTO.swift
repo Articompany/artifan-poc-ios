@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct ArtistModelDTO: Codable {
+struct ListArtistsResponseDTO: Codable {
     let data: [ArtistDTO]
+}
+
+struct OneArtistResponseDTO: Codable {
+    let data: ArtistDTO
 }
 
 // MARK: - Event Model
@@ -17,6 +21,7 @@ struct ArtistDTO: Codable {
     let documentId: String
     let name: String
     let city: String
+    let description: String
     let banner: BannerDTO
     let category: CategoryDTO
     
@@ -70,14 +75,15 @@ extension ArtistDTO {
         )
         
         let category = ArtistModel.Category(
-            id: category.id,
+            id: category.documentId,
             name: category.name
         )
         
         return ArtistModel(
-            id: id,
+            id: documentId,
             name: name,
             city: city,
+            description: description,
             banner: banner,
             category: category
         )

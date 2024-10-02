@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ArtistDetailScreen: View {
     @State private var showActionSheet = false
+    @State private var vm = ArtistViewModel()
     
     let gridItem: AFGridItem
     
@@ -53,14 +54,16 @@ struct ArtistDetailScreen: View {
                         Text(gridItem.title)
                             .font(.title)
                             .padding(.vertical)
-                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat erat mauris, vitae aliquam metus tincidunt ac. Cras porta ornare libero, id pharetra est suscipit eget. Mauris ultricies enim a est lobortis, vel facilisis urna vestibulum. Ut interdum urna nunc, a ultricies sapien iaculis quis. Mauris sit amet ligula purus. Vivamus non sem fringilla")
-                    }.padding(.leading, 20)
+                        Text(vm.artist?.description ?? "")
+                    }
+                    .padding(.leading, 20)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                 }
             }
             HStack {
                 Button(action: {
-                    showActionSheet = true
+                    openWhatsApp("51906151515")
                 }) {
                     Text("WhatsApp")
                         .padding()
@@ -86,7 +89,6 @@ struct ArtistDetailScreen: View {
                 title: Text("Elige una opción"),
                 buttons: [
                     .default(Text("Llamar a 906151515"), action: {
-                        openWhatsApp("51906151515")
                         // Acción para llamar al número
                         if let url = URL(string: "tel://906151515") {
                             UIApplication.shared.open(url)
@@ -107,6 +109,9 @@ struct ArtistDetailScreen: View {
                     .cancel()
                 ]
             )
+        }
+        .task {
+            await vm.getArtistBy(id: gridItem.id)
         }
     }
     
