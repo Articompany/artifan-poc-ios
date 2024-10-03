@@ -10,12 +10,7 @@
 		CC02D49E2C683D8A00C9A9ED /* Artifan_POCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02D49D2C683D8A00C9A9ED /* Artifan_POCApp.swift */; };
 		CC02D4A22C683D8A00C9A9ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC02D4A12C683D8A00C9A9ED /* Assets.xcassets */; };
 		CC02D4A52C683D8A00C9A9ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC02D4A42C683D8A00C9A9ED /* Preview Assets.xcassets */; };
-		CC02D4AE2C683E1F00C9A9ED /* ShowsViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02D4AD2C683E1F00C9A9ED /* ShowsViewmodel.swift */; };
-		CC02D4B12C683E3900C9A9ED /* ShowsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02D4B02C683E3900C9A9ED /* ShowsResponseDTO.swift */; };
-		CC02D4B32C683E9D00C9A9ED /* ListShowsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02D4B22C683E9D00C9A9ED /* ListShowsScreen.swift */; };
 		CC2FB7152CABA41300A66921 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CC2FB7142CABA41300A66921 /* AlertToast */; };
-		CC5B2B962C703AB900F555B5 /* ShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B2B952C703AB900F555B5 /* ShowView.swift */; };
-		CC7B32142C6D8AE2001D3187 /* ShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B32132C6D8AE2001D3187 /* ShowModel.swift */; };
 		CC808CBA2CAA5817000124F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC808CB92CAA5817000124F4 /* LaunchScreen.storyboard */; };
 		CC808CBD2CAA5AAE000124F4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CC808CBC2CAA5AAE000124F4 /* Lottie */; };
 		CCDF729F2C6AD6F20084BD94 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDF729E2C6AD6F20084BD94 /* EnvironmentManager.swift */; };
@@ -29,11 +24,6 @@
 		CC02D49D2C683D8A00C9A9ED /* Artifan_POCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifan_POCApp.swift; sourceTree = "<group>"; };
 		CC02D4A12C683D8A00C9A9ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC02D4A42C683D8A00C9A9ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CC02D4AD2C683E1F00C9A9ED /* ShowsViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewmodel.swift; sourceTree = "<group>"; };
-		CC02D4B02C683E3900C9A9ED /* ShowsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsResponseDTO.swift; sourceTree = "<group>"; };
-		CC02D4B22C683E9D00C9A9ED /* ListShowsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListShowsScreen.swift; sourceTree = "<group>"; };
-		CC5B2B952C703AB900F555B5 /* ShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowView.swift; sourceTree = "<group>"; };
-		CC7B32132C6D8AE2001D3187 /* ShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModel.swift; sourceTree = "<group>"; };
 		CC808CB92CAA5817000124F4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCDF729B2C6AD3620084BD94 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		CCDF729C2C6AD37C0084BD94 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -112,21 +102,8 @@
 			children = (
 				CC808CC52CAA5B62000124F4 /* Splash */,
 				CCEB5B742CA882FB00DCC521 /* Dashboard */,
-				CC02D4AF2C683E2E00C9A9ED /* Shows */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		CC02D4AF2C683E2E00C9A9ED /* Shows */ = {
-			isa = PBXGroup;
-			children = (
-				CC02D4AD2C683E1F00C9A9ED /* ShowsViewmodel.swift */,
-				CC02D4B02C683E3900C9A9ED /* ShowsResponseDTO.swift */,
-				CC7B32132C6D8AE2001D3187 /* ShowModel.swift */,
-				CC02D4B22C683E9D00C9A9ED /* ListShowsScreen.swift */,
-				CC5B2B952C703AB900F555B5 /* ShowView.swift */,
-			);
-			path = Shows;
 			sourceTree = "<group>";
 		};
 		CC2A93662C9115E900447D69 /* Components */ = {
@@ -262,13 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCFC6E2A2C7177E6003089CE /* LocalStorageManager.swift in Sources */,
-				CC02D4B32C683E9D00C9A9ED /* ListShowsScreen.swift in Sources */,
 				CCDF729F2C6AD6F20084BD94 /* EnvironmentManager.swift in Sources */,
-				CC02D4B12C683E3900C9A9ED /* ShowsResponseDTO.swift in Sources */,
 				CCDF72A12C6AE5A70084BD94 /* ApiManager.swift in Sources */,
-				CC02D4AE2C683E1F00C9A9ED /* ShowsViewmodel.swift in Sources */,
-				CC5B2B962C703AB900F555B5 /* ShowView.swift in Sources */,
-				CC7B32142C6D8AE2001D3187 /* ShowModel.swift in Sources */,
 				CC02D49E2C683D8A00C9A9ED /* Artifan_POCApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

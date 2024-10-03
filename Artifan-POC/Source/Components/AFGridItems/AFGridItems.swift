@@ -8,17 +8,19 @@
 import SwiftUI
 import Kingfisher
 
-struct AFGridItem: Identifiable {
-    let id: String
-    let title: String
-    let image: String
-    let height: CGFloat
-}
-
 protocol AFGridItemProtocol {
     var gridID: String { get }
     var gridTitle: String { get }
     var gridImage: String { get }
+    var gridDescription: String { get }
+}
+
+struct AFGridItem: Identifiable {
+    let id: String
+    let title: String
+    let image: String
+    let description: String
+    let height: CGFloat
 }
 
 struct AFGridItems: View {
@@ -36,7 +38,7 @@ struct AFGridItems: View {
     init(items: [AFGridItemProtocol], numOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10, onTapItem: ((AFGridItem) -> Void)? = nil) {
         let gridItems: [AFGridItem] = items.map { item in
             let randomHeight = CGFloat.random(in: 200...400)
-            return AFGridItem(id: item.gridID, title: item.gridTitle, image: item.gridImage, height: randomHeight)
+            return AFGridItem(id: item.gridID, title: item.gridTitle, image: item.gridImage, description: item.gridDescription, height: randomHeight)
         }
         self.spacing = spacing
         self.horizontalPadding = horizontalPadding
@@ -103,17 +105,18 @@ struct AFGridItems: View {
         var gridID: String
         var gridTitle: String
         var gridImage: String
+        var gridDescription: String
     }
     
     let gridItemsPreview: [ArtistPreview] = [
-        ArtistPreview(gridID: "1", gridTitle: "Title 1", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
-        ArtistPreview(gridID: "2", gridTitle: "Title 2", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_r0_f4937416e7.jpg"),
-        ArtistPreview(gridID: "3", gridTitle: "Title 3", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/e1_caf847d69e.png"),
-        ArtistPreview(gridID: "4", gridTitle: "Title 4", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png"),
-        ArtistPreview(gridID: "5", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_t0_088d280350.jpg"),
-        ArtistPreview(gridID: "6", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_k0_c1f85d1c5f.jpg"),
-        ArtistPreview(gridID: "7", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_c0_e79bf07396.jpg"),
-        ArtistPreview(gridID: "8", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_d1_271c05bb0b.jpg")
+        ArtistPreview(gridID: "1", gridTitle: "Title 1", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png", gridDescription: "Description 1"),
+        ArtistPreview(gridID: "2", gridTitle: "Title 2", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_r0_f4937416e7.jpg", gridDescription: "Description 2"),
+        ArtistPreview(gridID: "3", gridTitle: "Title 3", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/e1_caf847d69e.png", gridDescription: "Description 3"),
+        ArtistPreview(gridID: "4", gridTitle: "Title 4", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/medium_b1_cdc2ad7b5e.png", gridDescription: "Description 4"),
+        ArtistPreview(gridID: "5", gridTitle: "Title 5", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_t0_088d280350.jpg", gridDescription: "Description 5"),
+        ArtistPreview(gridID: "6", gridTitle: "Title 6", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_k0_c1f85d1c5f.jpg", gridDescription: "Description 6"),
+        ArtistPreview(gridID: "7", gridTitle: "Title 7", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_c0_e79bf07396.jpg", gridDescription: "Description 7"),
+        ArtistPreview(gridID: "8", gridTitle: "Title 8", gridImage: "https://artifan-dev.s3.sa-east-1.amazonaws.com/small_d1_271c05bb0b.jpg", gridDescription: "Description 8")
     ]
     
     return AFGridItems(items: gridItemsPreview, numOfColumns: 2, spacing: 10, horizontalPadding: 15)

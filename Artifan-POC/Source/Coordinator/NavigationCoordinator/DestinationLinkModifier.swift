@@ -37,21 +37,12 @@ struct DestinationLinkModifier<Destination: View>: ViewModifier {
     
     @ViewBuilder
     func groupContent(_ content: Content) -> some View {
-        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            content
-                .background(
-                    NavigationLink(isActive: $isPresented, destination: destination, label: {
-                        EmptyView()
-                    })
-                )
-        } else if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
-            content
-                .background(
-                    NavigationLink(destination: destination(), isActive: $isPresented, label: {
-                        EmptyView()
-                    })
-                )
-        }
+        content
+            .background(
+                NavigationLink(isActive: $isPresented, destination: destination, label: {
+                    EmptyView()
+                })
+            )
     }
 }
 

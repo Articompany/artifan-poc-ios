@@ -52,5 +52,21 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2E6A38F-A90A-4C23-819E-71D1685D04F2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../var/folders/k5/bxw_5gl942d46kclvtd8v9vw0000gn/T/swift-generated-sources/@__swiftmacro_11Artifan_POC0022AFGridItemsswift_tiAIefMX102_0_33_0E36B307E80B2CE0A18962B5C076E294Ll7PreviewfMf_.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "$s11Artifan_POC0022AFGridItemsswift_tiAIefMX102_0_33_0E36B307E80B2CE0A18962B5C076E294Ll7PreviewfMf_15PreviewRegistryfMu_"
+            landmarkType = "37">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

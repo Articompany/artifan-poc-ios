@@ -54,7 +54,7 @@ struct ArtistDetailScreen: View {
                         Text(gridItem.title)
                             .font(.title)
                             .padding(.vertical)
-                        Text(vm.artist?.description ?? "")
+                        Text(gridItem.description)
                     }
                     .padding(.leading, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -63,7 +63,7 @@ struct ArtistDetailScreen: View {
             }
             HStack {
                 Button(action: {
-                    openWhatsApp("51906151515")
+                    openWhatsApp(vm.artist?.whatsapp ?? "")
                 }) {
                     Text("WhatsApp")
                         .padding()
@@ -131,5 +131,5 @@ struct ArtistDetailScreen: View {
 
 
 #Preview {
-    ArtistDetailScreen(gridItem: AFGridItem(id: "1", title: "Camilita Show infantilas", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_k0_c1f85d1c5f.jpg", height: 200))
+    ArtistDetailScreen(gridItem: AFGridItem(id: "1", title: "Camilita Show infantilas", image: "https://artifan-dev.s3.sa-east-1.amazonaws.com/large_k0_c1f85d1c5f.jpg", description: "Descript of Artis detail screen", height: 200))
 }

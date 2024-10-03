@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationKey: EnvironmentKey {
+struct NavigationKey: @preconcurrency EnvironmentKey {
     @MainActor
     static let defaultValue = Navigation()
 }

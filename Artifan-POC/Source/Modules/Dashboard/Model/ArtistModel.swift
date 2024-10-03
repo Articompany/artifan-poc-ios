@@ -14,6 +14,7 @@ struct ArtistModel: Identifiable {
     let description: String
     let banner: Banner
     let category: Category
+    let whatsapp: String
     
     struct Banner {
         let url: String
@@ -33,4 +34,5 @@ extension ArtistModel: AFGridItemProtocol {
     var gridID: String { id }
     var gridTitle: String { name }
     var gridImage: String { banner.largeURL }
+    var gridDescription: String { description }
 }

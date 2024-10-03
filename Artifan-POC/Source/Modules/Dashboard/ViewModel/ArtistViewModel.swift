@@ -40,13 +40,11 @@ class ArtistViewModel {
     
     func fetchOneArtistFromApi(_ id: String) async throws -> ArtistModel {
         let path = "/api/artists/\(id)"
+        var queryItems: [URLQueryItem] = []
         
-        let queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "populate", value: "*")
-        ]
+        queryItems.append(URLQueryItem(name: "populate", value: "*"))
         
         let response = try await APIManager.shared.call(path: path, method: .get, queryItems: queryItems, responseType: OneArtistResponseDTO.self)
-        
         let artist: ArtistModel = response.data.toModel()
         
         return artist
@@ -54,13 +52,13 @@ class ArtistViewModel {
     
     func fetchArtistsFromApi() async throws -> [ArtistModel] {
         let path = "/api/artists"
+        var queryItems: [URLQueryItem] = []
         
-        let fields = ["id", "documentId", "name", "city", "description"]
+        let fields = ["id", "documentId", "name", "city", "description", "whatsapp"]
         let categoryFields = ["documentId", "name"]
         let bannerFields = ["url", "formats"]
+        let photosFields = ["url", "formats"]
         
-        var queryItems: [URLQueryItem] = []
-
         for (index, field) in fields.enumerated() {
             queryItems.append(URLQueryItem(name: "[fields][\(index)]", value: field))
         }
@@ -71,6 +69,10 @@ class ArtistViewModel {
         
         for (index, field) in bannerFields.enumerated() {
             queryItems.append(URLQueryItem(name: "populate[banner][fields][\(index)]", value: field))
+        }
+        
+        for (index, field) in photosFields.enumerated() {
+            queryItems.append(URLQueryItem(name: "populate[photos][fields][\(index)]", value: field))
         }
         
         let response = try await APIManager.shared.call(path: path, method: .get, queryItems: queryItems, responseType: ListArtistsResponseDTO.self)
